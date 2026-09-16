@@ -9,9 +9,10 @@ public class Enemy : MonoBehaviour
     private float _shootingDelay = 1f;
     private float _cooldown = 0;
     private Rigidbody2D rb;
-    private float speed = 1f;
+    private float speed = 2.5f;
     private int currentDirection = -1;
     private float startPosition;
+    private float roamingRadius = 5f;
 
     [SerializeField] private GameObject _enemyShot;
     [Header("Debug")]
@@ -45,11 +46,11 @@ public class Enemy : MonoBehaviour
 
     public void Roaming()
     {
-        if (startPosition - transform.position.x >= 1)
+        if (startPosition - transform.position.x >= roamingRadius)
         {
             currentDirection = 1;
         }
-        else if (startPosition - transform.position.x <= -1)
+        else if (startPosition - transform.position.x <= -roamingRadius)
         {
             currentDirection = -1;
         }
