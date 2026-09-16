@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private PlayerData playerData = new();
+    private PlayerStats playerStats;
     private Rigidbody2D rb;
     private bool isGrounded = true;
     private InputSystem_Actions controls;
@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        playerData = SaveSystem.Load();
+        playerStats = GetComponent<PlayerStats>();
         controls = new();
     }
 
@@ -38,14 +38,14 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         float movement = controls.Player.Move.ReadValue<float>();
-        rb.linearVelocity = new Vector2(movement * playerData._playerMoveSpeed, rb.linearVelocity.y);
+        rb.linearVelocity = new Vector2(movement * playerStats.MoveSpeed, rb.linearVelocity.y);
     }
 
     public void Jump(InputAction.CallbackContext context)
     {
         if (isGrounded)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, playerData._jumpForce);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, playerStats.JumpForce);
             isGrounded = false;
         }
     }
@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isGrounded)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, -playerData._fallSpeed);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, -playerStats.FallSpeed);
         }
     }
 
