@@ -1,9 +1,14 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class UI : MonoBehaviour
 {
     [SerializeField] private GameObject _pauseMenu;
+    [SerializeField] private TextMeshProUGUI healthText;
+    [SerializeField] private GameObject player;
+    private PlayerStats playerStats;
+
     private InputSystem_Actions controls;
     private bool IsEscape = false;
 
@@ -11,6 +16,12 @@ public class UI : MonoBehaviour
     {
         _pauseMenu.SetActive(IsEscape);
         controls = new();
+        playerStats = player.GetComponent<PlayerStats>();
+    }
+
+    private void FixedUpdate()
+    {
+        healthText.text = $"{playerStats.currentHealth}/{playerStats.MaxHealth}";
     }
 
     public void ToggleEscapeScreen(InputAction.CallbackContext context)
