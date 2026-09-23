@@ -10,17 +10,16 @@ public class PlayerStats : MonoBehaviour
     public int modifiedHealth { get; private set; }
     public int currentHealth { get; private set; }
 
-    private void Update()
+    private void Awake()
     {
         MoveSpeed = config.moveSpeed;
         JumpForce = config.jumpForce;
         FallSpeed = config.fallSpeed;
-        MaxHealth = config.maxHp + modifiedHealth;
+        MaxHealth = config.maxHealth + modifiedHealth;
+
         currentHealth = MaxHealth;
     }
 
-    public void IncreaseMaxHp(int count)
-    {
-        modifiedHealth += count;
-    }
+    public void IncreaseMaxHp(int count) => modifiedHealth += count;
+    public void TakeDamage(int count) => currentHealth -= count;
 }

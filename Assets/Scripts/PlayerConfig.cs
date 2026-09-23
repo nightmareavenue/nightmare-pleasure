@@ -9,5 +9,5 @@ public class PlayerConfig : ScriptableObject
     public float fallSpeed = 20f;
 
     [Header("Health")]
-    public int maxHp = 100;
+    public int maxHealth = 100;
 }
