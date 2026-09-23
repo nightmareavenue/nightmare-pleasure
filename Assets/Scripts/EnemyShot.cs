@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyShotMovement : MonoBehaviour
+public class EnemyShot : MonoBehaviour
 {
     public float enemyShotSpeed = 5f;
     public float enemyShotLifeTime = 2f;
@@ -43,7 +43,7 @@ public class EnemyShotMovement : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            collision.GetComponent<PlayerStats>()?.TakeDamage(1);
+            collision.GetComponent<PlayerStats>()?.TakeDamage(5);
             Destroy(gameObject);
         }
     }

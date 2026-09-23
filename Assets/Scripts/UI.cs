@@ -21,7 +21,7 @@ public class UI : MonoBehaviour
 
     private void FixedUpdate()
     {
-        healthText.text = $"{playerStats.currentHealth}/{playerStats.MaxHealth}";
+        healthText.text = $"Health: {playerStats.CurrentHealth}/{playerStats.MaxHealth}";
     }
 
     public void ToggleEscapeScreen(InputAction.CallbackContext context)

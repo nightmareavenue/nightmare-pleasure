@@ -10,4 +10,5 @@ public class PlayerConfig : ScriptableObject
 
     [Header("Health")]
     public int maxHealth = 100;
+    public int maxJumps = 1;
 }

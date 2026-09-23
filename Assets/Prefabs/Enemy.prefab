@@ -80,7 +80,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 2
+  m_Radius: 12
 --- !u!1 &3713212384619457070
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,7 +135,7 @@ MonoBehaviour:
   enemyStatus: 0
   _enemyShot: {fileID: 8339672363070034453, guid: 020c3ef0ab7657b4c90f241f25eaaead, type: 3}
   shotSpawnPoint: {fileID: 6660500682653686179}
-  drawBorder: 0
+  drawBorder: 1
 --- !u!212 &8290428408099345251
 SpriteRenderer:
   serializedVersion: 3
@@ -281,7 +281,7 @@ GameObject:
   - component: {fileID: 6993317380140859184}
   - component: {fileID: 3168542240951578051}
   m_Layer: 0
-  m_Name: ChaseRadius
+  m_Name: EscapeRadius
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

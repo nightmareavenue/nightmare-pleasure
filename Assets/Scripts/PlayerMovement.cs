@@ -5,8 +5,9 @@ public class PlayerMovement : MonoBehaviour
 {
     private PlayerStats playerStats;
     private Rigidbody2D rb;
-    private bool isGrounded = true;
+    public bool isGrounded = true;
     private InputSystem_Actions controls;
+    private int jumpsUsed = 0;
 
 
     private void Awake()
@@ -43,16 +44,15 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (isGrounded)
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, playerStats.JumpForce);
-            isGrounded = false;
-        }
+        if (jumpsUsed >= playerStats.MaxJumps) return;
+
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, playerStats.JumpForce);
+        jumpsUsed++;
     }
 
     private void Fall(InputAction.CallbackContext context)
     {
-        if (!isGrounded)
+        if (jumpsUsed > 0)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, -playerStats.FallSpeed);
         }
@@ -60,6 +60,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Ground")) isGrounded = true;
+        if (collision.CompareTag("Ground") || collision.GetComponentInParent<Enemy>() != null)
+        {
+            jumpsUsed = 0;
+        }
     }
 }

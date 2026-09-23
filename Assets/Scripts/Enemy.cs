@@ -79,7 +79,7 @@ public class Enemy : MonoBehaviour
         Vector2 spawnPos = shotSpawnPoint != null ? (Vector2)shotSpawnPoint.position : (Vector2)transform.position;
         GameObject shot = Instantiate(_enemyShot, spawnPos, Quaternion.identity);
 
-        var shotMovement = shot.GetComponent<EnemyShotMovement>();
+        var shotMovement = shot.GetComponent<EnemyShot>();
 
 
         _cooldown = _shootingDelay;

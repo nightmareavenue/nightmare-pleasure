@@ -18,6 +18,7 @@ public class Item : MonoBehaviour
     private void GetItem(ItemConfig item)
     {
         playerStats.IncreaseMaxHp(item._health);
+        playerStats.UnlockDoubleJump();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
