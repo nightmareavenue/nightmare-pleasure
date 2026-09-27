@@ -50,6 +50,7 @@ MonoBehaviour:
   enemyShotSpeed: 5
   enemyShotLifeTime: 2
   turnSpeed: 200
+  Effect: {fileID: 11400000, guid: 51e2158ca5e3ef04eaae48b60c468058, type: 2}
 --- !u!212 &8666035331540105759
 SpriteRenderer:
   serializedVersion: 3

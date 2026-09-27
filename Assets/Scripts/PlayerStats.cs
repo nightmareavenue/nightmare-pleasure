@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerStats : MonoBehaviour
+public class PlayerStats : MonoBehaviour, IDamageable
 {
     [SerializeField] private PlayerConfig config;
     public float MoveSpeed { get; private set; }
@@ -32,7 +32,9 @@ public class PlayerStats : MonoBehaviour
         MaxJumps = config.maxJumps + bonusJumps;
     }
     public void UnlockDoubleJump() => bonusJumps = 1;
-
     public void IncreaseMaxHp(int count) => ModifiedHealth += count;
-    public void TakeDamage(int count) => CurrentHealth -= count; 
+    public void TakeDamage(int count)
+    {
+        CurrentHealth -= count;
+    } 
 }

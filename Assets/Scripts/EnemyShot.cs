@@ -5,6 +5,7 @@ public class EnemyShot : MonoBehaviour
     public float enemyShotSpeed = 5f;
     public float enemyShotLifeTime = 2f;
     [SerializeField] private float turnSpeed = 200f;
+    public StatusEffectConfig Effect;
 
     private Rigidbody2D rb;
     private Transform player;
@@ -44,6 +45,7 @@ public class EnemyShot : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             collision.GetComponent<PlayerStats>()?.TakeDamage(5);
+            collision.GetComponent<StatusList>()?.AddEffect(Effect);
             Destroy(gameObject);
         }
     }

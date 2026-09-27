@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamageable
 {
     [Header("Combat")]
     [SerializeField] private int maxHp = 5;
@@ -13,7 +13,6 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D rb;
     private float speed = 3f;
     private float escapeSpeed = 5f;
-
     private int currentDirection = -1;
     private float startPosition;
     private float roamingRadius = 3f;

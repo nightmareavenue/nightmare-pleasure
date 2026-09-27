@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 7492935289345840280}
   - component: {fileID: 7468143222604851435}
   - component: {fileID: 832799667109733057}
+  - component: {fileID: 218048476386624244}
   - component: {fileID: 5641448143315460885}
   - component: {fileID: 6657660640068393556}
   - component: {fileID: 1418188896581328994}
@@ -199,6 +200,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1c01fae715dd9f4c9013f0c991f9689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  isGrounded: 1
+--- !u!114 &218048476386624244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6921196704858791472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66cf0027ee267b14b8ecb87df264cb5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatusList
+  activeStatuses:
+  - {fileID: 11400000, guid: 51e2158ca5e3ef04eaae48b60c468058, type: 2}
 --- !u!212 &5641448143315460885
 SpriteRenderer:
   serializedVersion: 3
