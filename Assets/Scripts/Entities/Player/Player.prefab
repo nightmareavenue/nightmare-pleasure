@@ -283,7 +283,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1c01fae715dd9f4c9013f0c991f9689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  isGrounded: 1
 --- !u!114 &218048476386624244
 MonoBehaviour:
   m_ObjectHideFlags: 0

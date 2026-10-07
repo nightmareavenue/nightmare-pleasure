@@ -2,22 +2,20 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(IDamageable))]
 public class StatusList : MonoBehaviour
 {
-    [System.Serializable]
     private class ActiveStatus
     {
         public StatusEffectConfig config;
         public float remainingTime;
-        public int damage;
-        public float tickTimer;
-        public ActiveStatus(StatusEffectConfig config)
+        public IStatusEffectRuntime runtime;
+
+        public ActiveStatus(StatusEffectConfig config, GameObject target)
         {
             this.config = config;
             remainingTime = config.duration;
-            damage = config.healthDamage * config.level;
-            tickTimer = config.tickInterval;
+            runtime = config.Behavior != null ? config.Behavior.CreateRuntime(target) : null;
+            runtime?.Apply();
         }
     }
 
@@ -36,28 +34,25 @@ public class StatusList : MonoBehaviour
     private readonly List<ActiveStatus> active = new();
 
     public IReadOnlyList<StatusInfo> ActiveStatuses =>
-        active.ConvertAll(a => new StatusInfo(a.config, a.remainingTime));
+        active.ConvertAll(status => new StatusInfo(status.config, status.remainingTime));
     public event Action OnStatusesChanged;
-    private IDamageable damageable;
 
-    private void Awake()
-    {
-        damageable = GetComponent<IDamageable>();
-    }
+    public bool HasEffect<TBehavior>() where TBehavior : StatusEffectBehavior =>
+        active.Exists(status => status.config.Behavior is TBehavior);
 
     public void AddEffect(StatusEffectConfig effect)
     {
-        var existing = active.Find(a => a.config == effect);
+        if (effect == null) return;
 
+        var existing = active.Find(status => status.config == effect);
         if (existing != null)
         {
             existing.remainingTime += effect.duration;
         }
         else
         {
-            active.Add(new ActiveStatus(effect));
+            active.Add(new ActiveStatus(effect, gameObject));
         }
-
 
         OnStatusesChanged?.Invoke();
     }
@@ -70,22 +65,24 @@ public class StatusList : MonoBehaviour
         {
             var status = active[i];
             status.remainingTime -= Time.deltaTime;
-            status.tickTimer -= Time.deltaTime;
-
-            if (status.tickTimer <= 0 && status.config.healthDamage > 0)
-            {
-                status.tickTimer = status.config.tickInterval;
-                int damage = status.config.healthDamage * status.config.level;
-                damageable?.TakeDamage(damage);
-            }
+            status.runtime?.Tick(Time.deltaTime);
 
             if (status.remainingTime <= 0)
             {
+                status.runtime?.Remove();
                 active.RemoveAt(i);
                 changed = true;
             }
         }
 
         if (changed) OnStatusesChanged?.Invoke();
+    }
+
+    private void OnDestroy()
+    {
+        foreach (var status in active)
+        {
+            status.runtime?.Remove();
+        }
     }
 }

@@ -9,13 +9,14 @@ public class HealthPointsShow : MonoBehaviour
     {
         GameObject UICanvas = new GameObject("UI Canvas");
         Canvas canvas = UICanvas.AddComponent<Canvas>();
-        canvas.transform.position = new Vector3(0, 1.2f, 0);
+        canvas.transform.position = new Vector3(0, 1, 0);
         RectTransform canvasRect = UICanvas.GetComponent<RectTransform>();
-        canvasRect.sizeDelta = new Vector2(5, 1);
+        canvasRect.sizeDelta = new Vector2(1, 1);
 
         GameObject healthTextGO = new GameObject("Health Text");
         RectTransform textRect = healthTextGO.AddComponent<RectTransform>();
-        textRect.sizeDelta = new Vector2(5, 1);
+        textRect.sizeDelta = new Vector2(4, 1);
+        textRect.localScale = new Vector3(0.25f, 0.25f, 0.25f);
 
         textMesh = healthTextGO.AddComponent<TextMeshProUGUI>();
         textMesh.fontSize = 1;
