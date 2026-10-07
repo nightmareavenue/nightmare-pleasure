@@ -90,14 +90,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6660500682653686179}
+  - component: {fileID: 3053511003209981999}
   - component: {fileID: 2596461090148325697}
   - component: {fileID: 8290428408099345251}
   - component: {fileID: 5045538597414407997}
   - component: {fileID: 2909208067091796401}
+  - component: {fileID: 5467851697203550415}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -118,6 +120,19 @@ Transform:
   - {fileID: 9008369806068566175}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3053511003209981999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3713212384619457070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82af6513e3e3a5b498ca8f4ca03ca2ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EntityStats
+  config: {fileID: 11400000, guid: c4bfbcf1d5869964b9dbbe08afbe77bb, type: 2}
 --- !u!114 &2596461090148325697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,12 +145,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf4ee5e3cfefcc48add474fa5b561a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  maxHp: 5
-  contactDamage: 1
   enemyStatus: 0
   _enemyShot: {fileID: 8339672363070034453, guid: 020c3ef0ab7657b4c90f241f25eaaead, type: 3}
   shotSpawnPoint: {fileID: 6660500682653686179}
-  drawBorder: 1
 --- !u!212 &8290428408099345251
 SpriteRenderer:
   serializedVersion: 3
@@ -269,6 +281,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &5467851697203550415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3713212384619457070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 164cefd75568e9c4c900945979e73c71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthPointsShow
 --- !u!1 &7384365794461048192
 GameObject:
   m_ObjectHideFlags: 0

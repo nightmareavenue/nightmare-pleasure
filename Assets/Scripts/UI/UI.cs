@@ -9,7 +9,7 @@ public class UI : MonoBehaviour
     [SerializeField] private GameObject PausePanel;
     [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private GameObject player;
-    private PlayerStats playerStats;
+    private EntityStats playerStats;
 
     [Header("Effects")]
     public Transform EffectsPanel;
@@ -23,7 +23,7 @@ public class UI : MonoBehaviour
     {
         PausePanel.SetActive(false);
         controls = new();
-        playerStats = player.GetComponent<PlayerStats>();
+        playerStats = player.GetComponent<EntityStats>();
         statusList = player.GetComponent<StatusList>();
     }
 

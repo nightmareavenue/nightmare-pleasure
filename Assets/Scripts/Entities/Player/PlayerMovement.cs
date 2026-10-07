@@ -2,10 +2,10 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(PlayerStats))]
+[RequireComponent(typeof(EntityStats))]
 public class PlayerMovement : MonoBehaviour
 {
-    private PlayerStats playerStats;
+    private EntityStats playerStats;
     private Rigidbody2D rb;
     public bool isGrounded = true;
     private InputSystem_Actions controls;
@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        playerStats = GetComponent<PlayerStats>();
+        playerStats = GetComponent<EntityStats>();
         controls = new();
     }
 
@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = new Vector2(movement * playerStats.MoveSpeed, rb.linearVelocity.y);
     }
 
-    public void Jump(InputAction.CallbackContext context)
+    private void Jump(InputAction.CallbackContext context)
     {
         if (jumpsUsed >= playerStats.MaxJumps) return;
 
@@ -60,9 +60,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Ground") || collision.GetComponentInParent<Enemy>() != null)
+        if (collision.CompareTag("Ground") || collision.GetComponentInParent<Magician>() != null)
         {
             jumpsUsed = 0;
         }

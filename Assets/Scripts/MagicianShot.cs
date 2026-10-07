@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyShot : MonoBehaviour
+public class MagicianShot : MonoBehaviour
 {
     public float enemyShotSpeed = 5f;
     public float enemyShotLifeTime = 2f;
@@ -44,7 +44,7 @@ public class EnemyShot : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            collision.GetComponent<PlayerStats>()?.TakeDamage(5);
+            collision.GetComponent<EntityStats>()?.TakeDamage(5);
             collision.GetComponent<StatusList>()?.AddEffect(Effect);
             Destroy(gameObject);
         }

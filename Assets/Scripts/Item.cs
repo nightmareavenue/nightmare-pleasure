@@ -4,14 +4,14 @@ public class Item : MonoBehaviour
 {
     [SerializeField] private ItemConfig item;
     private SpriteRenderer sr;
-    private PlayerStats playerStats;
+    private EntityStats playerStats;
     private GameObject player;
 
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         sr = GetComponent<SpriteRenderer>();
-        playerStats = player.GetComponent<PlayerStats>();
+        playerStats = player.GetComponent<EntityStats>();
         sr.sprite = item._icon;
     }
 

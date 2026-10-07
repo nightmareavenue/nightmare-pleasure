@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 164cefd75568e9c4c900945979e73c71
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - healthPointsPrefab: {instanceID: 0}
+  - healthPointsTextPrefab: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
