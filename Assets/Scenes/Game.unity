@@ -423,7 +423,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Health: '
+  m_text: ' '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -948,6 +948,7 @@ GameObject:
   - component: {fileID: 1448565552}
   - component: {fileID: 1448565555}
   - component: {fileID: 1448565557}
+  - component: {fileID: 1448565558}
   m_Layer: 0
   m_Name: TestDonkey
   m_TagString: Untagged
@@ -1113,6 +1114,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 164cefd75568e9c4c900945979e73c71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthPointsShow
+--- !u!50 &1448565558
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448565551}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1544915517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1812,6 +1840,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 993711712762666384, guid: b288528fd05a01643bfd6b95c6149091, type: 3}
+      propertyPath: m_SpriteTilingProperty.drawMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1467877407571845577, guid: b288528fd05a01643bfd6b95c6149091, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12.9
@@ -1856,9 +1888,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: VerticalBlock
       objectReference: {fileID: 0}
-    - target: {fileID: 6090175177397696001, guid: b288528fd05a01643bfd6b95c6149091, type: 3}
-      propertyPath: m_TagString
-      value: Ground
+    - target: {fileID: 7917698224782226390, guid: b288528fd05a01643bfd6b95c6149091, type: 3}
+      propertyPath: m_DrawMode
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1930,6 +1962,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 832799667109733057, guid: 60bf8927d2a2d9448a30d8e47340ddbe, type: 3}
+      propertyPath: wallJumpForce
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4485810870744110114, guid: 60bf8927d2a2d9448a30d8e47340ddbe, type: 3}
       propertyPath: m_ClearFlags
       value: 2

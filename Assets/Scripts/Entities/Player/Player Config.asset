@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Player Config
   m_EditorClassIdentifier: Assembly-CSharp::PlayerConfig
   moveSpeed: 10
-  jumpForce: 20
+  jumpForce: 25
   fallSpeed: 20
   maxHealth: 100
   maxJumps: 1

@@ -4,8 +4,7 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - healthPointsPrefab: {instanceID: 0}
-  - healthPointsTextPrefab: {instanceID: 0}
+  - healthbarSprite: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
