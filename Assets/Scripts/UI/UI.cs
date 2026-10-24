@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class UI : MonoBehaviour
 {
     [SerializeField] private GameObject PausePanel;
+    [SerializeField] private GameObject crosshair;
     [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private GameObject player;
     private EntityStats playerStats;
@@ -21,10 +22,10 @@ public class UI : MonoBehaviour
 
     private void Awake()
     {
-        PausePanel.SetActive(false);
         controls = new();
         playerStats = player.GetComponent<EntityStats>();
         statusList = player.GetComponent<StatusList>();
+        SetPaused(false);
     }
 
     private void OnEnable()
@@ -52,7 +53,7 @@ public class UI : MonoBehaviour
         foreach (var info in statusList.ActiveStatuses)
         {
             if (statusTexts.TryGetValue(info.Config, out var text))
-                text.text = info.RemainingTime.ToString("F1")+"s";
+                text.text = FormatTime(info.RemainingTime);
         }
     }
 
@@ -70,12 +71,20 @@ public class UI : MonoBehaviour
             statusUIObj.name = info.Config.statusName;
             var effectIcon = statusUIObj.GetComponentInChildren<Image>();
             var effectDuration = statusUIObj.GetComponentInChildren<TextMeshProUGUI>();
-            effectDuration.text = info.RemainingTime.ToString("F1");
+            effectDuration.text = FormatTime(info.RemainingTime);
             effectIcon.sprite = info.Config.icon;
             statusTexts[info.Config] = effectDuration;
         }
     }
 
-    public void ToggleEscapeScreen(InputAction.CallbackContext context) => PausePanel.SetActive(!PausePanel.activeSelf);
-    public void ContinueButton() => PausePanel.SetActive(!PausePanel.activeSelf);
+    private static string FormatTime(float seconds) => seconds.ToString("F1") + "s";
+
+    private void SetPaused(bool paused)
+    {
+        PausePanel.SetActive(paused);
+        if (crosshair != null) crosshair.SetActive(!paused);
+    }
+
+    public void ToggleEscapeScreen(InputAction.CallbackContext context) => SetPaused(!PausePanel.activeSelf);
+    public void ContinueButton() => SetPaused(false);
 }

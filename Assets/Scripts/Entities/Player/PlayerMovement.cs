@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private float wallJumpForce = 8f;
     private float wallJumpLockTime = 0.1f;
     private float wallClingPressure = 1f;
-    private float wallClingMaxTime = 0.2f;
+    private float wallClingMaxTime = 0.1f;
     private float wallSlideSpeed = 1.5f;
 
     private EntityStats playerStats;
